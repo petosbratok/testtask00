@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-let url = `ws://127.0.0.1:8000/ws/socket-server/`
+let url = `ws://http://testtask00.pythonanywhere.comws/socket-server/`
 
 const chatSocket = new WebSocket(url)
 function send_message(){
