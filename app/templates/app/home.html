@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+  <div class="number-container">
+    <p class="number">000-000</p>
+  </div>
+  <a class="logout" href="{% url 'logout' %}?next=/"> Logout</a>
+{% endblock %}
+
+{% block scripts %}
+  <script type="text/javascript">
+  let url = `ws://${window.location.host}/ws/socket-server/`
+
+  const chatSocket = new WebSocket(url)
+
+  chatSocket.onmessage = function(e){
+    let data = JSON.parse(e.data)
+    console.log('Data:', data)
+
+    if(data.type === 'chat'){
+      $('.number').html(data.message)
+
+
+    }
+  }
+  </script>
+{% endblock %}
