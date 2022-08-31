@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-let url = `ws://testtask00.herokuapp.com/ws/socket-server/`
+let url = `ws://127.0.0.1:8000/ws/socket-server/`
 
 const chatSocket = new WebSocket(url)
 function send_message(){
