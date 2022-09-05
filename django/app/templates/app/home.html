@@ -20,27 +20,11 @@
   <script type="module">
     import { io } from "socket.io-client";
 
-    // const socket = io("ws://localhost:5000");
-    const socket = io("ws://testtask00server.herokuapp.com");
+    const socket = io("ws://localhost:5000");
+    // const socket = io("ws://testtask00server.herokuapp.com");
     socket.on('new_data', function ( data ) {
-      console.log(data.number)
+      console.log(data)
       $('.number').html(data.number)
     })
   </script>
-  <!-- <script type="text/javascript">
-  let url = `ws://${window.location.host}/ws/socket-server/`
-
-  const chatSocket = new WebSocket(url)
-
-  chatSocket.onmessage = function(e){
-    let data = JSON.parse(e.data)
-    console.log('Data:', data)
-
-    if(data.type === 'chat'){
-      $('.number').html(data.message)
-
-
-    }
-  }
-  </script> -->
 {% endblock %}

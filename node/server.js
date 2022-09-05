@@ -16,8 +16,6 @@ const io = new Server(server, {
   }
 });
 
-
-
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
@@ -31,7 +29,22 @@ io.on('connection', (socket) => {
 });
 
 
-
 server.listen(process.env.PORT || 5000, function() {
   console.log('listening on ??? some port')
 })
+
+function send_message(){
+  io.emit('new_data', {
+    'number': Math.floor(Math.random() * (999 - 100 + 1) + 100) + '-' + Math.floor(Math.random() * (999 - 100 + 1) + 100)
+  });
+
+}
+
+
+async function funq(){
+  while (true){
+    await new Promise(r => setTimeout(r, 5000));
+    await send_message()
+  }
+}
+funq()
